@@ -1,12 +1,26 @@
 import React from "react";
 
-// "title": "JavaScript Basics",
-//   "author": "Md. Mosaraf Hossen",
-//   "pages": 200,
-//   "publishedYear": 2021
+
 const AllBook = ({ book }) => {
-  console.log(book);
-  const { title, author, page, puplishedYear } = book;
+
+    const handleDelete=(id)=>{
+        // console.log("delete btn clicked",id)
+        fetch(`http://localhost:5000/books/${id}`,{
+            method:'DELETE'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log('after delete',data)
+            if(data.deletedCount){
+                  alert('delete successfully')
+
+            }
+          
+        })
+    }
+  
+  const {_id, title, author, page, puplishedYear } = book;
+//   console.log(_id)
   return (
     <div>
       <div className=" mx-auto mt-10 bg-gray-100 rounded-2xl shadow-md p-6">
@@ -30,7 +44,7 @@ const AllBook = ({ book }) => {
           <button className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md">
             Update
           </button>
-          <button className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md">
+          <button onClick={()=>handleDelete(_id)}  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md">
             Delete
           </button>
         </div>

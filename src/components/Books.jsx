@@ -1,12 +1,15 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router";
 
 
-// "title": "JavaScript Basics",
-//   "author": "Md. Mosaraf Hossen",
-//   "pages": 200,
-//   "publishedYear": 2021
 
-const handleAddBook=(e)=>{
+const Books = () => {
+
+    const navigate=useNavigate();
+
+
+
+    const handleAddBook=(e)=>{
     e.preventDefault();
     const target=e.target;
     const title=target.title.value;
@@ -25,11 +28,14 @@ const handleAddBook=(e)=>{
     })
     .then(res=>res.json())
     .then(data=>{
-        console.log('data',data)
+        if(data.insertedId){
+            alert("new book added successfully")
+            navigate("/")
+        }
     })
 
 }
-const Books = () => {
+    
   return (
     <div className=" flex items-center justify-center">
       <div className="card bg-base-100 shadow-2xl w-[500px]">
