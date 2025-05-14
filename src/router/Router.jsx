@@ -4,6 +4,7 @@ import Home from '../components/Home'
 import Books from '../components/Books'
 import Book from '../components/Book'
 import Details from '../components/Details'
+import Updated from '../components/Updated'
  export const router=createBrowserRouter([
     {
         path:"/",
@@ -25,6 +26,12 @@ import Details from '../components/Details'
                 path:"/details/:id",
                 loader:({params})=>fetch(`http://localhost:5000/books/${params.id}`),
                 Component:Details
+            },
+
+            {
+                path:"/update/:id",
+                loader:({params})=> fetch(`http://localhost:5000/books/${params.id}`),
+                Component:Updated
             }
         ]
 

@@ -42,9 +42,9 @@ const AllBook = ({ book }) => {
           <Link  to={`/details/${_id}`}  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">
             Details
           </Link>
-          <button className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md">
+          <Link to={`/update/${_id}`}  className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md">
             Update
-          </button>
+          </Link >
           <button onClick={()=>handleDelete(_id)}  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md">
             Delete
           </button>
